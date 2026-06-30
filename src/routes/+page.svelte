@@ -1,5 +1,16 @@
 <script lang="ts">
-	const whatsappUrl = 'https://wa.me/51999999999';
+	const whatsappUrl = 'https://wa.me/51940941857';
+
+	let nombre = $state('');
+	let telefono = $state('');
+	let tipo = $state('Seleccione una especialidad');
+	let mensaje = $state('');
+
+	function handleSubmit(event: Event) {
+		event.preventDefault();
+		const texto = `Hola, soy ${nombre || '---'}.%0ATelefono: ${telefono || '---'}%0AConsulta: ${tipo}%0AMensaje: ${mensaje || '---'}`;
+		window.open(`${whatsappUrl}?text=${texto}`, '_blank');
+	}
 
 	const trustItems = ['Atencion confidencial', 'Respuesta rapida', 'Asesoria personalizada'];
 
@@ -84,28 +95,11 @@
 				<a class="pb-1 text-[#031632] transition hover:text-[#775a19]" href="#servicios">Servicios</a>
 				<a class="pb-1 text-[#031632] transition hover:text-[#775a19]" href="#contacto">Contacto</a>
 			</nav>
-
-			<a
-				href={whatsappUrl}
-				class="inline-flex items-center gap-2 rounded bg-[#25d366] px-4 py-3 text-sm font-semibold uppercase tracking-[0.05em] text-white transition hover:-translate-y-0.5 hover:bg-[#1ebe57] hover:shadow-lg md:px-6"
-			>
-				<span class="material-symbols-outlined text-lg">chat</span>
-				<span class="hidden sm:inline">Consultar</span>
-			</a>
 		</div>
 	</header>
 
-	<section id="inicio" class="relative overflow-hidden pt-20">
-		<div class="absolute inset-0">
-			<img
-				src="https://lh3.googleusercontent.com/aida/AP1WRLtAcykphrPdz6HN1RHbTSwiTy-CYfOPI1nmzny30DxoSqR3iaIwwChE7uHnwWjRZ9yV8DCrbehpor2ERJaTeKagxjmLxe48f7vbD-oZ-4ZlXqD9HM3g5mY9x33yGNDs2Cr0AnCXKi9iO36S2B49dDCfC6f6Ga6B1W2diHxQuW3i7TaiJcATUbS34B27s1o91U79e-puA310-oIeP4fDuB_w2PE56tzmzR2xE3DfpJ6r-b_5ys5hhL0U44hQ"
-				alt="Interior de oficina legal moderna"
-				class="h-full w-full object-cover opacity-20"
-			/>
-			<div class="absolute inset-0 bg-gradient-to-r from-[#f7fafc] via-[#f7fafc]/95 to-[#f7fafc]/40"></div>
-		</div>
-
-		<div class="relative mx-auto grid min-h-[calc(100vh-80px)] max-w-[1200px] items-center gap-12 px-5 py-16 lg:grid-cols-[0.95fr_1.05fr] lg:px-10 lg:py-28">
+	<section id="inicio" class="pt-20">
+		<div class="mx-auto grid min-h-[calc(100vh-80px)] max-w-[1200px] items-center gap-12 px-5 py-16 lg:grid-cols-[0.8fr_1.2fr] lg:px-10 lg:py-28">
 			<div class="max-w-2xl">
 				<div class="mb-4 flex items-center gap-3">
 					<div class="h-px w-10 bg-[#775a19]"></div>
@@ -125,7 +119,7 @@
 						href={whatsappUrl}
 						class="inline-flex items-center justify-center gap-2 rounded bg-[#25d366] px-8 py-4 text-sm font-semibold uppercase tracking-[0.05em] text-white transition hover:-translate-y-0.5 hover:bg-[#1ebe57] hover:shadow-xl"
 					>
-						<span class="material-symbols-outlined">chat</span>
+						<img src="/wsp.svg" alt="WhatsApp" class="h-6 w-6" />
 						Consultar por WhatsApp
 					</a>
 					<a
@@ -147,14 +141,16 @@
 			</div>
 
 			<div class="relative hidden lg:block">
-				<div class="aspect-[1.6] overflow-hidden rounded-xl shadow-[0_24px_60px_rgba(3,22,50,0.12)]">
+				<div class="relative aspect-[1.3] overflow-hidden rounded-2xl border border-[#c5c6ce]/30 shadow-[0_32px_64px_rgba(3,22,50,0.15)]">
 					<img
-						src="https://lh3.googleusercontent.com/aida/AP1WRLtAcykphrPdz6HN1RHbTSwiTy-CYfOPI1nmzny30DxoSqR3iaIwwChE7uHnwWjRZ9yV8DCrbehpor2ERJaTeKagxjmLxe48f7vbD-oZ-4ZlXqD9HM3g5mY9x33yGNDs2Cr0AnCXKi9iO36S2B49dDCfC6f6Ga6B1W2diHxQuW3i7TaiJcATUbS34B27s1o91U79e-puA310-oIeP4fDuB_w2PE56tzmzR2xE3DfpJ6r-b_5ys5hhL0U44hQ"
+						src="/main_image.webp"
 						alt="Oficina legal elegante"
 						class="h-full w-full object-cover"
 					/>
+					<div class="absolute inset-0 bg-gradient-to-t from-[#031632]/20 to-transparent"></div>
 				</div>
-				<div class="absolute -bottom-6 -right-6 -z-10 h-32 w-32 rounded-lg bg-[#f1f4f6]"></div>
+				<div class="absolute -bottom-4 -right-4 -z-10 h-28 w-28 rounded-xl border border-[#c5c6ce]/20 bg-[#f1f4f6]"></div>
+				<div class="absolute -left-4 -top-4 -z-10 h-24 w-24 rounded-xl bg-[#775a19]/5"></div>
 			</div>
 		</div>
 	</section>
@@ -200,7 +196,7 @@
 				<div class="mt-10 border-t border-[#775a19] pt-8">
 					<h3 class="font-['Playfair_Display'] text-2xl font-semibold text-[#031632]">Informacion de contacto</h3>
 					<div class="mt-5 space-y-4">
-						<p class="flex items-center gap-3 text-[#44474d]"><span class="material-symbols-outlined text-[#031632]">call</span>+51 999 999 999</p>
+						<p class="flex items-center gap-3 text-[#44474d]"><span class="material-symbols-outlined text-[#031632]">call</span>+51 940 941 857</p>
 						<p class="flex items-center gap-3 text-[#44474d]"><span class="material-symbols-outlined text-[#031632]">schedule</span>Lun - Vie: 9:00 AM - 6:00 PM</p>
 						<p class="flex items-center gap-3 text-[#44474d]"><span class="material-symbols-outlined text-[#031632]">location_on</span>Centro de Huancayo, Junin, Peru</p>
 					</div>
@@ -209,15 +205,15 @@
 
 			<div class="rounded-xl bg-[#f1f4f6] p-6 shadow-[0_24px_60px_rgba(3,22,50,0.08)] md:p-8">
 				<h3 class="font-['Playfair_Display'] text-2xl font-semibold text-[#031632]">Solicitar informacion</h3>
-				<form class="mt-6 space-y-4">
+				<form class="mt-6 space-y-4" onsubmit={handleSubmit}>
 					<label class="block text-sm font-semibold uppercase tracking-[0.05em] text-[#031632]" for="nombre">Nombre completo</label>
-					<input id="nombre" class="w-full rounded border-0 bg-white px-4 py-3 text-[#181c1e] outline-none ring-1 ring-transparent transition focus:ring-[#031632]" placeholder="Ej. Juan Perez" type="text" />
+					<input id="nombre" bind:value={nombre} class="w-full rounded border-0 bg-white px-4 py-3 text-[#181c1e] outline-none ring-1 ring-transparent transition focus:ring-[#031632]" placeholder="Ej. Juan Perez" type="text" />
 
 					<label class="block text-sm font-semibold uppercase tracking-[0.05em] text-[#031632]" for="telefono">Telefono</label>
-					<input id="telefono" class="w-full rounded border-0 bg-white px-4 py-3 text-[#181c1e] outline-none ring-1 ring-transparent transition focus:ring-[#031632]" placeholder="+51 ..." type="tel" />
+					<input id="telefono" bind:value={telefono} class="w-full rounded border-0 bg-white px-4 py-3 text-[#181c1e] outline-none ring-1 ring-transparent transition focus:ring-[#031632]" placeholder="+51 ..." type="tel" />
 
 					<label class="block text-sm font-semibold uppercase tracking-[0.05em] text-[#031632]" for="tipo">Tipo de consulta</label>
-					<select id="tipo" class="w-full rounded border-0 bg-white px-4 py-3 text-[#44474d] outline-none ring-1 ring-transparent transition focus:ring-[#031632]">
+					<select id="tipo" bind:value={tipo} class="w-full rounded border-0 bg-white px-4 py-3 text-[#44474d] outline-none ring-1 ring-transparent transition focus:ring-[#031632]">
 						<option>Seleccione una especialidad</option>
 						<option>Derecho familiar</option>
 						<option>Derecho civil</option>
@@ -226,14 +222,47 @@
 					</select>
 
 					<label class="block text-sm font-semibold uppercase tracking-[0.05em] text-[#031632]" for="mensaje">Mensaje breve</label>
-					<textarea id="mensaje" class="w-full resize-none rounded border-0 bg-white px-4 py-3 text-[#181c1e] outline-none ring-1 ring-transparent transition focus:ring-[#031632]" placeholder="Describa brevemente su caso..." rows="4"></textarea>
+					<textarea id="mensaje" bind:value={mensaje} class="w-full resize-none rounded border-0 bg-white px-4 py-3 text-[#181c1e] outline-none ring-1 ring-transparent transition focus:ring-[#031632]" placeholder="Describa brevemente su caso..." rows="4"></textarea>
 
-					<a href={whatsappUrl} class="flex w-full items-center justify-center gap-2 rounded bg-[#031632] px-6 py-4 text-sm font-semibold uppercase tracking-[0.05em] text-white transition hover:bg-[#1a2b48]">
+					<button type="submit" class="flex w-full items-center justify-center gap-2 rounded bg-[#031632] px-6 py-4 text-sm font-semibold uppercase tracking-[0.05em] text-white transition hover:bg-[#1a2b48]">
 						<span class="material-symbols-outlined text-lg">arrow_forward</span>
 						Enviar solicitud
-					</a>
+					</button>
 					<p class="text-center text-xs leading-5 text-[#44474d]">Tus datos estan seguros y seran tratados con confidencialidad.</p>
 				</form>
+			</div>
+		</div>
+	</section>
+
+	<section class="bg-[#f7fafc] px-5 py-16 lg:px-10 lg:py-20">
+		<div class="mx-auto max-w-[1200px]">
+			<div class="mx-auto mb-10 max-w-2xl text-center">
+				<h2 class="font-['Playfair_Display'] text-4xl font-semibold text-[#031632]">Ubicanos</h2>
+				<p class="mt-4 leading-7 text-[#44474d]">Estamos en el centro de Huancayo. Visitanos o escribenos por WhatsApp.</p>
+				<div class="mx-auto mt-6 h-1 w-16 bg-[#775a19]"></div>
+			</div>
+			<div class="mx-auto overflow-hidden rounded-xl shadow-[0_24px_60px_rgba(3,22,50,0.1)]">
+				<iframe
+					src="https://www.google.com/maps?q=Huancayo+Junin+Peru+centro&output=embed"
+					width="100%"
+					height="400"
+					style="border:0;display:block"
+					allowfullscreen
+					loading="lazy"
+					referrerpolicy="no-referrer-when-downgrade"
+					title="Ubicacion de Justitia Law en Huancayo"
+				></iframe>
+			</div>
+			<div class="mt-6 text-center">
+				<a
+					href="https://www.google.com/maps?q=Huancayo+Junin+Peru"
+					target="_blank"
+					rel="noopener noreferrer"
+					class="inline-flex items-center gap-2 text-sm font-semibold text-[#775a19] transition hover:text-[#a37a2e]"
+				>
+					<span class="material-symbols-outlined text-base">open_in_new</span>
+					Abrir en Google Maps
+				</a>
 			</div>
 		</div>
 	</section>
@@ -253,6 +282,6 @@
 		aria-label="Contactar por WhatsApp"
 		class="fixed bottom-6 right-6 z-50 flex h-14 w-14 items-center justify-center rounded-full bg-[#25d366] text-white shadow-lg transition hover:scale-110 hover:bg-[#1ebe57]"
 	>
-		<span class="material-symbols-outlined text-3xl">forum</span>
+		<img src="/wsp.svg" alt="WhatsApp" class="h-7 w-7" />
 	</a>
 </main>
